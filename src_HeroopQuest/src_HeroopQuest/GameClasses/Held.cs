@@ -4,9 +4,42 @@ using System.Text;
 
 namespace src_HeroopQuest.GameClasses
 {
-    enum Heldtype { Babrbaar, Dwerg, Elf, Tovenaar}
+    enum Heldtype { Barbaar, Dwerg, Elf, Tovenaar }
     class Held
     {
+        public Held(Heldtype type, string naam)
+        {
+            Naam = naam;
+            Heldtype = type;
+
+            switch (type)
+            {
+                case Heldtype.Barbaar:
+                    AanvalsDobbelstenen = 3;
+                    MaxIntelligentie = 2;
+                    MaxLichaam = 8;
+                    break;
+                case Heldtype.Dwerg:
+                    MaxIntelligentie = 3;
+                    MaxLichaam = 7;
+                    break;
+                case Heldtype.Elf:
+                    MaxIntelligentie = 4;
+                    MaxLichaam = 6;
+                    break;
+                case Heldtype.Tovenaar:
+                    AanvalsDobbelstenen = 1;
+                    MaxIntelligentie = 6;
+                    MaxLichaam = 4;
+                    break;
+                default:
+                    break;
+            }
+
+            HuidigIntelligentie = MaxIntelligentie;
+            HuidigLichaam = MaxLichaam;
+        }
+
         public string Naam { get; set; }
 
         public string Beschrijving { get; private set; }
@@ -21,7 +54,7 @@ namespace src_HeroopQuest.GameClasses
 
         public Heldtype Heldtype { get; private set; }
 
-        public int AanvalDobbelstenen { get; private set; } = 2;//is standaard 2 als beginwaarde
+        public int AanvalsDobbelstenen { get; private set; } = 2;//is standaard 2 als beginwaarde
 
         public int Verdedigingsdobbelstenen { get; private set; } = 2;
 
